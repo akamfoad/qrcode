@@ -8,12 +8,14 @@ export default class ColorUtils {
     }
 
     switch (hex.length) {
+      // @ts-ignore
       case 3:
         hex += 'F';
       // Fall through
       case 4:
         bytes.push(...hex.split('').map(h => parseInt(h.repeat(2), 16)));
         break;
+      // @ts-ignore
       case 6:
         hex += 'FF';
       // Fall through

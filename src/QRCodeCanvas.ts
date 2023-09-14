@@ -124,6 +124,7 @@ export default class QRCodeCanvas extends AbstractQRCodeWithImage {
         return qrCodeCanvas;
     }
 
+    // @ts-ignore
     _getImageSource(imageConfig: ImageConfigType): null | typeof Image | HTMLCanvasElement | Promise<any> {
         const source = imageConfig.source;
         if (typeof source === 'string') {
