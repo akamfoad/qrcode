@@ -1,6 +1,17 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
-  "include": ["src", "types", "test/QRCodeText.test.ts", "test/QRCodeSVG.test.ts", "test/QRCodeRaw.test.ts", "test/AbstractQRCodeWithImage.test.ts", "test/QRCodeCanvas.test.ts", "test/ColorUtils.test.ts", "test/DimensionUtils.test.ts", "test/ImageLoader.test.js"],
+  "include": [
+    "src",
+    "types",
+    "test/QRCodeText.test.ts",
+    "test/QRCodeSVG.test.ts",
+    "test/QRCodeRaw.test.ts",
+    "test/AbstractQRCodeWithImage.test.ts",
+    "test/QRCodeCanvas.test.ts",
+    "test/ColorUtils.test.ts",
+    "test/DimensionUtils.test.ts",
+    "test/ImageLoader.test.js"
+  ],
   "compilerOptions": {
     "module": "esnext",
     "lib": ["dom", "esnext"],
@@ -30,7 +41,6 @@
     // error out if import and file system have a casing mismatch. Recommended by TS
     "forceConsistentCasingInFileNames": true,
     // `tsdx build` ignores this option, but it is commonly used when type-checking separately with `tsc`
-    "noEmit": true,
-    "allowJs": true
+    "noEmit": true
   }
 }
