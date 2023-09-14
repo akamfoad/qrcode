@@ -35,6 +35,10 @@ The library is for generating QR codes like SVG, HTML5 Canvas, PNG and JPG files
 - To add possibility to use patterns, themes and flexible customisation of QR code.
 - to add support of rgb & rgba format for canvas colors.
 
+### TypeDocs
+
+<https://akamfoad.github.io/qrcode/>
+
 ### 1. How to install
 
 ```bash
