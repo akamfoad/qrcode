@@ -47,7 +47,7 @@ export default class QRCodeText extends QRCodeRaw {
             return null;
         }
 
-        const symbols = [];
+        const symbols:string[] = [];
 
         for (let y = 0; y < dataSize; y += 1) {
             for (let x = 0; x < dataSize; x += 1) {

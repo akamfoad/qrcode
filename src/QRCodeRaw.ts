@@ -64,19 +64,21 @@ export default class QRCodeRaw {
   }
 
   _getQrCodeData(modules: QRCodeDataType): QRCodeDataType {
-    const qrCodeData = [];
+    const qrCodeData: QRCodeDataType = [];
 
     const padding = this.padding;
     const invert = this.invert;
-    const rowPadding = Array(padding * 2 + modules.length).fill(invert);
-    const rowsPadding = Array(padding).fill(rowPadding);
-    const columnPadding = Array(padding).fill(invert);
+    const rowPadding = Array<boolean>(padding * 2 + modules.length).fill(
+      invert
+    );
+    const rowsPadding = Array<boolean[]>(padding).fill(rowPadding);
+    const columnPadding = Array<boolean>(padding).fill(invert);
 
     if (padding) {
       qrCodeData.push(...rowsPadding);
     }
     modules.forEach((row: boolean[]) => {
-      const qrCodeRow = [];
+      const qrCodeRow: boolean[] = [];
       qrCodeRow.push(
         ...columnPadding,
         ...row.map(isBlack => (invert ? !isBlack : isBlack)),
