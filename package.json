@@ -31,7 +31,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "qrcode",
+  "name": "@akamfoad/qrcode",
   "author": "akamfoad",
   "module": "dist/qrcode.esm.js",
   "size-limit": [
