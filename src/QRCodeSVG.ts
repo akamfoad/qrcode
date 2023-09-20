@@ -6,7 +6,7 @@ const TYPE_INT_WHITE = 0;
 const TYPE_INT_BLACK = 1;
 const TYPE_INT_PROCESSED = 2;
 
-type DataIntType = (
+export type DataIntType = (
   | typeof TYPE_INT_WHITE
   | typeof TYPE_INT_BLACK
   | typeof TYPE_INT_PROCESSED
@@ -49,9 +49,6 @@ export default class QRCodeSVG extends AbstractQRCodeWithImage {
 
     this.fgColor = params.fgColor;
     this.bgColor = params.bgColor;
-
-    // FIXME huh?
-    // this.toDataURL = this.toDataUrl;
   }
 
   _clearCache(): void {
