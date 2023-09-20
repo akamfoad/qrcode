@@ -102,10 +102,11 @@ export default class QRCodeRaw {
         );
         qrcode.addData(this.value);
         qrcode.make();
+
         if (!qrcode.modules) {
           return null;
         }
-        // this.qrCodeData = this._getQrCodeData(qrcode.modules);
+
         this.qrCodeData = this._getQrCodeData(qrcode.modules as boolean[][]);
         Object.freeze(this.qrCodeData);
       } catch (error) {
