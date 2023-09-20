@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: "Release"
+  group: 'Release'
   cancel-in-progress: true
 
 jobs:

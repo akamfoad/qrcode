@@ -1,11 +1,11 @@
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
-@akamfoad/qrcode
-=========
+# @akamfoad/qrcode
 
 The library is for generating QR codes like SVG, HTML5 Canvas, PNG and JPG files, or text.
 
 #### Features:
+
 - The library has classes for generation SVG, Canvas, PNG / JPG or text with QR code.
 - it is easy to use and configure (error correction level, type number, padding and so on).
 - Supports inverting of data.
@@ -13,22 +13,23 @@ The library is for generating QR codes like SVG, HTML5 Canvas, PNG and JPG files
 - Easy to extend the classes or create own class for generation QR code.
 
 - SVG (see [class `QRCodeSVG`](#33-class-qrcodesvg))
-    - Returns generated QR code as SVG (xml) or DataURL.
-    - Optimized SVG structure for xml and for DataURL.
-    - Supports adding an image (logo) to QR code (allows to use url, dataUrl, Image, Canvas). See [example](#23-qr-code-with-image)
-    - Allows to specify relative/abcolute position/size of image on QR code.
+
+  - Returns generated QR code as SVG (xml) or DataURL.
+  - Optimized SVG structure for xml and for DataURL.
+  - Supports adding an image (logo) to QR code (allows to use url, dataUrl, Image, Canvas). See [example](#23-qr-code-with-image)
+  - Allows to specify relative/abcolute position/size of image on QR code.
 
 - Canvas (see [class `QRCodeCanvas`](#32-class-qrcodecanvas))
-    - Draws QR code on provided canvas or returns new canvas element with QR code.
-    - Allows to get PNG / JPG files with QR code like dataUrl.
-    - Supports adding a image (logo) to QR code (allows to use url, dataUrl, Image, Canvas).
-    - Has image loader for images for QR code via Promise.
-    - It is possible to specify scale or canvas size.
-    - Allows to specify relative/abcolute position/size of image on QR code.
+
+  - Draws QR code on provided canvas or returns new canvas element with QR code.
+  - Allows to get PNG / JPG files with QR code like dataUrl.
+  - Supports adding a image (logo) to QR code (allows to use url, dataUrl, Image, Canvas).
+  - Has image loader for images for QR code via Promise.
+  - It is possible to specify scale or canvas size.
+  - Allows to specify relative/abcolute position/size of image on QR code.
 
 - Text (see [class `QRCodeText`](34-class-qrcodetext))
-    - It is possible to create QR code for consoles or text output.
-
+  - It is possible to create QR code for consoles or text output.
 
 #### Plans to do:
 
@@ -46,12 +47,18 @@ The library is for generating QR codes like SVG, HTML5 Canvas, PNG and JPG files
 ```
 
 ```javascript
-import { QRCodeRaw, QRCodeSVG, QRCodeCanvas, QRCodeText } from '@akamfoad/qrcode';
+import {
+  QRCodeRaw,
+  QRCodeSVG,
+  QRCodeCanvas,
+  QRCodeText,
+} from '@akamfoad/qrcode';
 ```
 
 ### 2. Quick examples
 
 #### 2.1. Create SVG QR Code
+
 ```javascript
 import { QRCodeSVG } from '@akamfoad/qrcode';
 
@@ -61,6 +68,7 @@ const xmlWithQRCode = qrSVG.toString();
 ```
 
 #### 2.2. Create Image QR Code
+
 ```javascript
 import { QRCodeCanvas } from '@akamfoad/qrcode';
 
@@ -70,23 +78,25 @@ const canvasWithQRCode = qrCanvas.getCanvas();
 ```
 
 #### 2.3. QR Code with Image
+
 ```javascript
 import { QRCodeSVG } from '@akamfoad/qrcode';
 
 const divElement = document.getElementById('some-id');
 
 const qrSVG = new QRCodeSVG('JohnDoe', {
-    level: 'Q',
-    image: {
-        source: 'GitHub-Mark-120px-plus.png',
-        width: '20%',
-        height: '20%',
-        x: 'center',
-        y: 'center',
-    },
+  level: 'Q',
+  image: {
+    source: 'GitHub-Mark-120px-plus.png',
+    width: '20%',
+    height: '20%',
+    x: 'center',
+    y: 'center',
+  },
 });
 divElement.innerHTML = qrSVG.toString();
 ```
+
 Result:
 
 Note, padding & image.border = 1 by default.
@@ -106,55 +116,64 @@ import { QRCodeRaw } from '@akamfoad/qrcode';
 Public methods:
 
 #### `constructor(value: string, config: object)`
+
 Create new instance of QRCodeRaw
 
 Params:
+
 - `value` (string) - new value for encoding to QR code
 - `config` (object, optional) - parameters of configuration
-    - `level` (string, optional, default = `L`) - error correction level. Note, the level affects QR Code data size. Allowed values:
-        - `L` - Allows recovery of up to 7% data loss
-        - `M` - Allows recovery of up to 15% data loss
-        - `Q` - Allows recovery of up to 25% data loss
-        - `H` - Allows recovery of up to 30% data loss
 
-    - `typeNumber` (number, optional, default = `0`) - data capacity type, see details in [appendix 4.1](#41-data-capacity-in-bytes). Type number (`1` ~ `40`), or `0` for auto detection.
-    - `invert` (boolean, optional, default = `false`) - inverting data of QR code.
-    - `padding` (number, optional, default = `1`) - count of white spaces on sides QR code. 1 unit has size like 1 information dot.
-    - `errorsEnabled`: (boolean, optional, default = `false`) - if it is enabled and QR code generator can not create a QR Code then an error will thrown. If it is disabled then methods will return `null` of fail.
+  - `level` (string, optional, default = `L`) - error correction level. Note, the level affects QR Code data size. Allowed values:
+
+    - `L` - Allows recovery of up to 7% data loss
+    - `M` - Allows recovery of up to 15% data loss
+    - `Q` - Allows recovery of up to 25% data loss
+    - `H` - Allows recovery of up to 30% data loss
+
+  - `typeNumber` (number, optional, default = `0`) - data capacity type, see details in [appendix 4.1](#41-data-capacity-in-bytes). Type number (`1` ~ `40`), or `0` for auto detection.
+  - `invert` (boolean, optional, default = `false`) - inverting data of QR code.
+  - `padding` (number, optional, default = `1`) - count of white spaces on sides QR code. 1 unit has size like 1 information dot.
+  - `errorsEnabled`: (boolean, optional, default = `false`) - if it is enabled and QR code generator can not create a QR Code then an error will thrown. If it is disabled then methods will return `null` of fail.
 
 #### `setValue(value: string): void`
+
 Set new value for encoding to QR code
 
 Params:
+
 - `value` (string) - new value for encoding to QR code
 
 #### `getDataSize(): number`
+
 Get size of QR code width / height (width and height are equal)
 Method will return `0` if QR code can not be generated by some reasons.
 
 #### `getData(): boolean[][]`
+
 Get raw data of QR code.
 Method will return `null` if QR code can not be generated by some reasons.
 
 Example:
+
 ```javascript
 import { QRCodeRaw } from '@akamfoad/qrcode';
 
 const config = {
-    level: 'H', // use high error correction level
-    padding: 0, // do not use padding around qr code data
+  level: 'H', // use high error correction level
+  padding: 0, // do not use padding around qr code data
 };
 
 const qrRaw = new QRCodeRaw('some value', config);
 const qrCodeRaw = qrRaw.getData();
 if (qrCodeRaw) {
-    console.log(qrCodeRaw);
-    // [
-    //   0: [true, true, true, true, ... true],
-    //   1: [true, false, false, false, ... true],
-    //   ...
-    //   24: [true, true, true, ... true],
-    // ]
+  console.log(qrCodeRaw);
+  // [
+  //   0: [true, true, true, true, ... true],
+  //   1: [true, false, false, false, ... true],
+  //   ...
+  //   24: [true, true, true, ... true],
+  // ]
 }
 ```
 
@@ -170,69 +189,75 @@ import { QRCodeCanvas } from '@akamfoad/qrcode';
 Public methods:
 
 #### `constructor(value: string, config: object)`
+
 Create new instance of QRCodeCanvas. Please see config description of [`QRCodeRaw.constructor`](#constructorvalue-string-config-object).
 
 Config has additional parameters:
+
 - `config` (object, optional) - parameters of configuration
-    - see config of [`QRCodeRaw.constructor`](#constructorvalue-string-config-object)
-    - `fgColor` (string, optional, default = `#000`) - foreground color of the QR code, is it allowed to use the next formats:
-        - `RGB` or `#RGB`, example: `#ABC`, will be converted to `#AABBCC`
-        - `RGBA` or `#RGBA`, example: `#ABCD`, will be converted to `#AABBCCDD`
-        - `RRGGBB` or `#RRGGBB`, example: `#AABBCC`
-        - `RRGGBBAA` or `#RRGGBBAA`, example: `#AABBCCDD`
-        - Other formats (like `red`, `rgb(...)`, `rgba(...)`) are not supported and will be converted to `#0000`
-    - `bgColor` (string, optional, default = `#FFF`) - background color of the QR code, see description of `fgColor`.
-    - `scale` (number, optional, default = `10`) - scale size of QR code. For example, when scale is 5 then QR generator will use 5 pixel for draw 1 data dot.
-    - `size` (number, optional, default = `null`) - size (width & height) of canvas in pixels. If size is specified then scale param will be ignored. Note, that the original canvas with QR code will be stretched to the specified size. See [image scheme](#23-qr-code-with-image)
-    - `image` (object, optional, default = `null`) - parameters on an image, that should be added to QR code, like logo.
-        - `source` (string|Image|Canvas) - source of image for QR Code, allowed to use the next types:
-            - `string` - url to resource or dataUrl of image.
-            - `Image` - it is allowed to use Image. The image's src should be loaded before use it.
-            - `Canvas` - allowed to use HTML5 canvas element.
-        - `width` (number|string) - width of the image in QR code dots (not a pixel), allowed formats:
-            - `<number>` - defines the width of image, example: `width: 30`
-            - `<number>%` - defines the width in percent of QR code without padding, example: `width: '20%'`
-        - `height` (number|string) - height of the image in QR code dots, see `width`
-        - `x` (number|string, optional, default = `0`) - position of image on QR code by horizontal in QR code dots (not a pixel), allowed formats:
-            - `<number>` - sets the left edge position from left to right, example: `x: 10`
-            - `<number>%` - sets the left edge position in % of QR code without padding. Negative values are allowed. Example: `x: '50%'`
-            - `left` -  aligns the image to the left, example: `x: 'left'`
-            - `right` -  aligns the image to the right, example: `x: 'right'`
-            - `center` - Centers the image in center of QR code,  example: `x: 'center'`
-            - `left <number>` - the same as `<number>`
-            - `left <number>%` - the same as `<number>%`
-            - `right <number>` - sets the right edge position from right to left, example: `x: 'right 5'`
-            - `right <number>%` - sets the tight edge position in % of QR code without padding, example: `x: 'right 10%'`
-        - `y` (number|string, optional, default = `0`) - position of image on QR code by vertical in QR code dots (not a pixel), allowed formats:
-            - `<number>` - sets the top edge position from top to bottom, example: `y: 10`
-            - `<number>%` - sets the top edge position in % of QR code without padding. Negative values are allowed. Example: `y: '50%'`
-            - `top` -  aligns the image to the top, example: `y: 'top'`
-            - `bottom` -  aligns the image to the bottom, example: `y: 'bottom'`
-            - `center` - Centers the image in center of QR code,  example: `y: 'center'`
-            - `top <number>` - the same as `<number>`
-            - `top <number>%` - the same as `<number>%`
-            - `bottom <number>` - sets the bottom edge position from bottom to top, example: `y: 'bottom 5'`
-            - `bottom <number>%` - sets the bottom edge position in % of QR code without padding, example: `y: 'bottom 10%'`
-        - `border` (number|null, optional, default = 1) - white space length around the images in dots. Negative values are allowed.
-            - use `0` - for white space only under the image
-            - use `null` to remove any white spaces under image and leave QR data dots
+  - see config of [`QRCodeRaw.constructor`](#constructorvalue-string-config-object)
+  - `fgColor` (string, optional, default = `#000`) - foreground color of the QR code, is it allowed to use the next formats:
+    - `RGB` or `#RGB`, example: `#ABC`, will be converted to `#AABBCC`
+    - `RGBA` or `#RGBA`, example: `#ABCD`, will be converted to `#AABBCCDD`
+    - `RRGGBB` or `#RRGGBB`, example: `#AABBCC`
+    - `RRGGBBAA` or `#RRGGBBAA`, example: `#AABBCCDD`
+    - Other formats (like `red`, `rgb(...)`, `rgba(...)`) are not supported and will be converted to `#0000`
+  - `bgColor` (string, optional, default = `#FFF`) - background color of the QR code, see description of `fgColor`.
+  - `scale` (number, optional, default = `10`) - scale size of QR code. For example, when scale is 5 then QR generator will use 5 pixel for draw 1 data dot.
+  - `size` (number, optional, default = `null`) - size (width & height) of canvas in pixels. If size is specified then scale param will be ignored. Note, that the original canvas with QR code will be stretched to the specified size. See [image scheme](#23-qr-code-with-image)
+  - `image` (object, optional, default = `null`) - parameters on an image, that should be added to QR code, like logo.
+    - `source` (string|Image|Canvas) - source of image for QR Code, allowed to use the next types:
+      - `string` - url to resource or dataUrl of image.
+      - `Image` - it is allowed to use Image. The image's src should be loaded before use it.
+      - `Canvas` - allowed to use HTML5 canvas element.
+    - `width` (number|string) - width of the image in QR code dots (not a pixel), allowed formats:
+      - `<number>` - defines the width of image, example: `width: 30`
+      - `<number>%` - defines the width in percent of QR code without padding, example: `width: '20%'`
+    - `height` (number|string) - height of the image in QR code dots, see `width`
+    - `x` (number|string, optional, default = `0`) - position of image on QR code by horizontal in QR code dots (not a pixel), allowed formats:
+      - `<number>` - sets the left edge position from left to right, example: `x: 10`
+      - `<number>%` - sets the left edge position in % of QR code without padding. Negative values are allowed. Example: `x: '50%'`
+      - `left` - aligns the image to the left, example: `x: 'left'`
+      - `right` - aligns the image to the right, example: `x: 'right'`
+      - `center` - Centers the image in center of QR code, example: `x: 'center'`
+      - `left <number>` - the same as `<number>`
+      - `left <number>%` - the same as `<number>%`
+      - `right <number>` - sets the right edge position from right to left, example: `x: 'right 5'`
+      - `right <number>%` - sets the tight edge position in % of QR code without padding, example: `x: 'right 10%'`
+    - `y` (number|string, optional, default = `0`) - position of image on QR code by vertical in QR code dots (not a pixel), allowed formats:
+      - `<number>` - sets the top edge position from top to bottom, example: `y: 10`
+      - `<number>%` - sets the top edge position in % of QR code without padding. Negative values are allowed. Example: `y: '50%'`
+      - `top` - aligns the image to the top, example: `y: 'top'`
+      - `bottom` - aligns the image to the bottom, example: `y: 'bottom'`
+      - `center` - Centers the image in center of QR code, example: `y: 'center'`
+      - `top <number>` - the same as `<number>`
+      - `top <number>%` - the same as `<number>%`
+      - `bottom <number>` - sets the bottom edge position from bottom to top, example: `y: 'bottom 5'`
+      - `bottom <number>%` - sets the bottom edge position in % of QR code without padding, example: `y: 'bottom 10%'`
+    - `border` (number|null, optional, default = 1) - white space length around the images in dots. Negative values are allowed.
+      - use `0` - for white space only under the image
+      - use `null` to remove any white spaces under image and leave QR data dots
 
 #### `draw(canvas: HTMLCanvasElement = null): null | HTMLCanvasElement| Promise`
+
 Draws QR code on a canvas element and return the canvas if the canvas is provided, or returns a new canvas element if canvas is not provided (see `getCanvas()`).
 If QR code can not be generated then `null` will be returned.
 If `config.image` is provided AND `config.image.source` is `string` (url or dataUrl) then a promise will be returned with a canvas as result.
 
 #### `getCanvas(): null | HTMLCanvasElement | Promise`
+
 Returns new canvas element with QR code. If QR code can not be generated then `null` will be returned.
 If `config.image` is provided AND `config.image.source` is `string` (url or dataUrl) then a promise will be returned with a canvas as result.
 
 #### `toDataUrl(type: string = 'image/png', encoderOptions: number = 0.92): null | string | Promise`
+
 Allowed alias: `toDataURL(...)`
 Returns dataUrl with QR code. If QR code can not be generated then `null` will be returned.
 If `config.image` is provided AND `config.image.source` is `string` (url or dataUrl) then a promise will be returned with a dataUrl as result.
 See params descriptions here: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
 
 Example
+
 ```javascript
 import { QRCodeCanvas } from '@akamfoad/qrcode';
 
@@ -242,27 +267,28 @@ console.log(dataUrl); // data:image/png;base64,iVBORw0KGgoAAAA...g==
 ```
 
 Example with promise
+
 ```javascript
 import { QRCodeCanvas } from '@akamfoad/qrcode';
 
 // Example with promise
 const config = {
-    level: 'H', // use high error correction level
-    padding: 0, // do not use padding around qr code data,
-    image: {
-        source: 'https://some-url.com/foo.png', // or data:image/jpeg;base64,...
-        width: '10%',
-        height: '10%',
-        x: 'center',
-        y: 'center',
-    }
+  level: 'H', // use high error correction level
+  padding: 0, // do not use padding around qr code data,
+  image: {
+    source: 'https://some-url.com/foo.png', // or data:image/jpeg;base64,...
+    width: '10%',
+    height: '10%',
+    x: 'center',
+    y: 'center',
+  },
 };
 
 const qrCanvas = new QRCodeCanvas('some value', config);
 const promise = qrCanvas.toDataUrl();
 // promise is returned because image.source is a string
 promise.then((dataUrl) => {
-    console.log(dataUrl); // data:image/png;base64,iVBORw0KGgoAAAAN...
+  console.log(dataUrl); // data:image/png;base64,iVBORw0KGgoAAAAN...
 });
 ```
 
@@ -278,54 +304,59 @@ import { QRCodeSVG } from '@akamfoad/qrcode';
 Public methods:
 
 #### `constructor(value: string, config: object)`
+
 Create new instance of QRCodeSVG. Please see config description of [`QRCodeRaw.constructor`](#constructorvalue-string-config-object).
 
 Config has additional parameters:
+
 - `config` (object, optional) - parameters of configuration
-    - see config of [`QRCodeRaw.constructor`](#constructorvalue-string-config-object)
-    - `fgColor` (string, optional, default = `#000`) - foreground color of the QR code in CSS format
-    - `bgColor` (string, optional, default = `#FFF`) - background color of the QR code in CSS format
-    - `image` (object, optional, default = `null`) - parameters on an image, that should be added to QR code, like logo. See [image scheme](#23-qr-code-with-image)
-        - `source` (string|Image|Canvas) - source of image for QR Code, allowed to use the next types:
-            - `string` - url to resource or dataUrl of image.
-            - `Image` - it is allowed to use Image. It is not necessary to have loaded image.
-            - `Canvas` - allowed to use HTML5 canvas element.
-        - `width` (number|string) - width of the image in QR code dots (not a pixel), allowed formats:
-            - `<number>` - defines the width of image, example: `width: 30`
-            - `<number>%` - defines the width in percent of QR code without padding, example: `width: '20%'`
-        - `height` (number|string) - height of the image in QR code dots, see `width`
-        - `x` (number|string, optional, default = `0`) - position of image on QR code by horizontal in QR code dots (not a pixel), allowed formats:
-            - `<number>` - sets the left edge position from left to right, example: `x: 10`
-            - `<number>%` - sets the left edge position in % of QR code without padding. Negative values are allowed. Example: `x: '50%'`
-            - `left` -  aligns the image to the left, example: `x: 'left'`
-            - `right` -  aligns the image to the right, example: `x: 'right'`
-            - `center` - Centers the image in center of QR code,  example: `x: 'center'`
-            - `left <number>` - the same as `<number>`
-            - `left <number>%` - the same as `<number>%`
-            - `right <number>` - sets the right edge position from right to left, example: `x: 'right 5'`
-            - `right <number>%` - sets the tight edge position in % of QR code without padding, example: `x: 'right 10%'`
-        - `y` (number|string, optional, default = `0`) - position of image on QR code by vertical in QR code dots (not a pixel), allowed formats:
-            - `<number>` - sets the top edge position from top to bottom, example: `y: 10`
-            - `<number>%` - sets the top edge position in % of QR code without padding. Negative values are allowed. Example: `y: '50%'`
-            - `top` -  aligns the image to the top, example: `y: 'top'`
-            - `bottom` -  aligns the image to the bottom, example: `y: 'bottom'`
-            - `center` - Centers the image in center of QR code,  example: `y: 'center'`
-            - `top <number>` - the same as `<number>`
-            - `top <number>%` - the same as `<number>%`
-            - `bottom <number>` - sets the bottom edge position from bottom to top, example: `y: 'bottom 5'`
-            - `bottom <number>%` - sets the bottom edge position in % of QR code without padding, example: `y: 'bottom 10%'`
-        - `border` (number|null, optional, default = 1) - white space length around the images in dots. Negative values are allowed.
-            - use `0` - for white space only under the image
-            - use `null` to remove any white spaces under image and leave QR data dots
+  - see config of [`QRCodeRaw.constructor`](#constructorvalue-string-config-object)
+  - `fgColor` (string, optional, default = `#000`) - foreground color of the QR code in CSS format
+  - `bgColor` (string, optional, default = `#FFF`) - background color of the QR code in CSS format
+  - `image` (object, optional, default = `null`) - parameters on an image, that should be added to QR code, like logo. See [image scheme](#23-qr-code-with-image)
+    - `source` (string|Image|Canvas) - source of image for QR Code, allowed to use the next types:
+      - `string` - url to resource or dataUrl of image.
+      - `Image` - it is allowed to use Image. It is not necessary to have loaded image.
+      - `Canvas` - allowed to use HTML5 canvas element.
+    - `width` (number|string) - width of the image in QR code dots (not a pixel), allowed formats:
+      - `<number>` - defines the width of image, example: `width: 30`
+      - `<number>%` - defines the width in percent of QR code without padding, example: `width: '20%'`
+    - `height` (number|string) - height of the image in QR code dots, see `width`
+    - `x` (number|string, optional, default = `0`) - position of image on QR code by horizontal in QR code dots (not a pixel), allowed formats:
+      - `<number>` - sets the left edge position from left to right, example: `x: 10`
+      - `<number>%` - sets the left edge position in % of QR code without padding. Negative values are allowed. Example: `x: '50%'`
+      - `left` - aligns the image to the left, example: `x: 'left'`
+      - `right` - aligns the image to the right, example: `x: 'right'`
+      - `center` - Centers the image in center of QR code, example: `x: 'center'`
+      - `left <number>` - the same as `<number>`
+      - `left <number>%` - the same as `<number>%`
+      - `right <number>` - sets the right edge position from right to left, example: `x: 'right 5'`
+      - `right <number>%` - sets the tight edge position in % of QR code without padding, example: `x: 'right 10%'`
+    - `y` (number|string, optional, default = `0`) - position of image on QR code by vertical in QR code dots (not a pixel), allowed formats:
+      - `<number>` - sets the top edge position from top to bottom, example: `y: 10`
+      - `<number>%` - sets the top edge position in % of QR code without padding. Negative values are allowed. Example: `y: '50%'`
+      - `top` - aligns the image to the top, example: `y: 'top'`
+      - `bottom` - aligns the image to the bottom, example: `y: 'bottom'`
+      - `center` - Centers the image in center of QR code, example: `y: 'center'`
+      - `top <number>` - the same as `<number>`
+      - `top <number>%` - the same as `<number>%`
+      - `bottom <number>` - sets the bottom edge position from bottom to top, example: `y: 'bottom 5'`
+      - `bottom <number>%` - sets the bottom edge position in % of QR code without padding, example: `y: 'bottom 10%'`
+    - `border` (number|null, optional, default = 1) - white space length around the images in dots. Negative values are allowed.
+      - use `0` - for white space only under the image
+      - use `null` to remove any white spaces under image and leave QR data dots
 
 #### `toString(): null | string`
+
 Returns SVG with QR code as string. If QR code can not be generated then `null` will be returned.
 
 #### `toDataUrl(): null | string`
+
 Allowed alias: `toDataURL(...)`
 Returns SVG with QR code as dataUrl (string). If QR code can not be generated then `null` will be returned.
 
 Example
+
 ```javascript
 import { QRCodeSVG } from '@akamfoad/qrcode';
 
@@ -335,19 +366,20 @@ console.log(dataUrl); // data:image/png;base64,iVBORw0KGgoAAAA...g==
 ```
 
 Example with image
+
 ```javascript
 import { QRCodeSVG } from '@akamfoad/qrcode';
 
 const config = {
-    level: 'M', // use high error correction level
-    padding: 0, // do not use padding around qr code data,
-    image: {
-        source: 'https://some-url.com/foo.png', // or data:image/jpeg;base64,...
-        width: '10%',
-        height: '10%',
-        x: 'center',
-        y: 'center',
-    }
+  level: 'M', // use high error correction level
+  padding: 0, // do not use padding around qr code data,
+  image: {
+    source: 'https://some-url.com/foo.png', // or data:image/jpeg;base64,...
+    width: '10%',
+    height: '10%',
+    x: 'center',
+    y: 'center',
+  },
 };
 
 const qrSVG = new QRCodeSVG('some value', config);
@@ -375,24 +407,28 @@ import { QRCodeSVG } from '@akamfoad/qrcode';
 Public methods:
 
 #### `constructor(value: string, config: object)`
+
 Create new instance of QRCodeSVG. Please see config description of [`QRCodeRaw.constructor`](#constructorvalue-string-config-object).
 
 Config has additional parameters:
+
 - `config` (object, optional) - parameters of configuration
-    - see config of [`QRCodeRaw.constructor`](#constructorvalue-string-config-object)
-    - `blackSymbol` (string, optional, default = `▓▓`) - symbol(s) for black QR code dot.
-    - `whiteSymbol` (string, optional, default = `  `) - symbol(s) for white QR code dot.
+  - see config of [`QRCodeRaw.constructor`](#constructorvalue-string-config-object)
+  - `blackSymbol` (string, optional, default = `▓▓`) - symbol(s) for black QR code dot.
+  - `whiteSymbol` (string, optional, default = `  `) - symbol(s) for white QR code dot.
 
 #### `toString(): null | string `
+
 Returns QR code as string. If QR code can not be generated then `null` will be returned.
 
 Example
+
 ```javascript
 import { QRCodeText } from '@akamfoad/qrcode';
 
 const qrText = new QRCodeText('some value', {
-    blackSymbol: '@@',
-    whiteSymbol: '..',
+  blackSymbol: '@@',
+  whiteSymbol: '..',
 });
 const qrCode = qrText.toString();
 console.log(qrCode);
@@ -420,7 +456,6 @@ console.log(qrCode);
 // ..@@..........@@..@@......@@..................
 // ..@@@@@@@@@@@@@@..@@@@......@@@@@@@@@@....@@..
 // ..............................................
-
 ```
 
 ### 4. Appendix

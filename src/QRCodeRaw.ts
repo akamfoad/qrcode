@@ -69,7 +69,7 @@ export default class QRCodeRaw {
     const padding = this.padding;
     const invert = this.invert;
     const rowPadding = Array<boolean>(padding * 2 + modules.length).fill(
-      invert
+      invert,
     );
     const rowsPadding = Array<boolean[]>(padding).fill(rowPadding);
     const columnPadding = Array<boolean>(padding).fill(invert);
@@ -81,8 +81,8 @@ export default class QRCodeRaw {
       const qrCodeRow: boolean[] = [];
       qrCodeRow.push(
         ...columnPadding,
-        ...row.map(isBlack => (invert ? !isBlack : isBlack)),
-        ...columnPadding
+        ...row.map((isBlack) => (invert ? !isBlack : isBlack)),
+        ...columnPadding,
       );
       qrCodeData.push(qrCodeRow);
     });
@@ -98,7 +98,7 @@ export default class QRCodeRaw {
       try {
         const qrcode = new QRCodeCore(
           this.typeNumber,
-          ErrorCorrectLevel[this.level]
+          ErrorCorrectLevel[this.level],
         );
         qrcode.addData(this.value);
         qrcode.make();
