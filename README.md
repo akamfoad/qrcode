@@ -4,7 +4,11 @@
 
 The library is for generating QR codes like SVG, HTML5 Canvas, PNG and JPG files, or text.
 
-#### Features:
+#### Acknowledgment
+
+This project initially has been forked from @cheprasov/js-qrcode.
+
+#### Features
 
 - The library has classes for generation SVG, Canvas, PNG / JPG or text with QR code.
 - it is easy to use and configure (error correction level, type number, padding and so on).
@@ -31,7 +35,7 @@ The library is for generating QR codes like SVG, HTML5 Canvas, PNG and JPG files
 - Text (see [class `QRCodeText`](34-class-qrcodetext))
   - It is possible to create QR code for consoles or text output.
 
-#### Plans to do:
+#### Plans to do
 
 - To add possibility to use patterns, themes and flexible customisation of QR code.
 - to add support of rgb & rgba format for canvas colors.
@@ -101,7 +105,7 @@ Result:
 
 Note, padding & image.border = 1 by default.
 
-![test](qrcode_scheme.png)
+![test](./assets/qrcode_scheme.png)
 
 ### 3. Documentation
 
@@ -254,7 +258,7 @@ If `config.image` is provided AND `config.image.source` is `string` (url or data
 Allowed alias: `toDataURL(...)`
 Returns dataUrl with QR code. If QR code can not be generated then `null` will be returned.
 If `config.image` is provided AND `config.image.source` is `string` (url or dataUrl) then a promise will be returned with a dataUrl as result.
-See params descriptions here: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
+See params descriptions here: <https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL>
 
 Example
 
@@ -415,9 +419,9 @@ Config has additional parameters:
 - `config` (object, optional) - parameters of configuration
   - see config of [`QRCodeRaw.constructor`](#constructorvalue-string-config-object)
   - `blackSymbol` (string, optional, default = `▓▓`) - symbol(s) for black QR code dot.
-  - `whiteSymbol` (string, optional, default = `  `) - symbol(s) for white QR code dot.
+  - `whiteSymbol` (string, optional, default = `▓▓`) - symbol(s) for white QR code dot.
 
-#### `toString(): null | string `
+#### `toString(): null | string`
 
 Returns QR code as string. If QR code can not be generated then `null` will be returned.
 

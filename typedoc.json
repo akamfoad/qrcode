@@ -1,1 +1,6 @@
-{}
+{
+  "out": "./typedocs",
+  "entryPoints": ["./src/index.ts"],
+  "exclude": ["./src/tests/.*.test.ts"],
+  "skipErrorChecking": true
+}
