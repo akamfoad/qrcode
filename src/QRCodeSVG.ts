@@ -1,4 +1,4 @@
-import type { OptionsType as ParentOptionsType } from './QRCodeRaw';
+import type { OptionsType as ParentOptionsType } from './AbstractQRCodeWithImage';
 import AbstractQRCodeWithImage from './AbstractQRCodeWithImage';
 import type { ImageConfigType } from './AbstractQRCodeWithImage';
 
