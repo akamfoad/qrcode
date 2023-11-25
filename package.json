@@ -14,7 +14,7 @@
     "qr",
     "qrcode-generator"
   ],
-  "size-limit":[
+  "size-limit": [
     {
       "path": "dist/qrcode.mjs",
       "limit": "6.7 kB"
@@ -50,6 +50,7 @@
     "node": ">=18"
   },
   "scripts": {
+    "size": "size-limit",
     "start": "tsup --watch",
     "build": "tsup",
     "test": "vitest",
