@@ -1,6 +1,6 @@
 {
   "name": "@akamfoad/qrcode",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "description": "The library is generating QR codes as SVG, HTML5 Canvas, PNG and JPG files, or text.",
   "homepage": "https://akamfoad.github.io/qrcode/",
@@ -37,7 +37,7 @@
   },
   "sideEffects": false,
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "scripts": {
     "start": "tsup --watch",
