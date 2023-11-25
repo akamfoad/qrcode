@@ -1,9 +1,9 @@
-import type {
-  OptionsType as ParentOptionsType,
-  QRCodeDataType,
-} from './QRCodeRaw';
+import type { QRCodeDataType } from './QRCodeRaw';
 import ColorUtils from './utils/ColorUtils';
-import type { ImageConfigType } from './AbstractQRCodeWithImage';
+import type {
+  ImageConfigType,
+  OptionsType as ParentOptionsType,
+} from './AbstractQRCodeWithImage';
 import AbstractQRCodeWithImage from './AbstractQRCodeWithImage';
 import { loadImage } from './loader/ImageLoader';
 
