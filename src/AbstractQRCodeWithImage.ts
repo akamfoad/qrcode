@@ -11,7 +11,7 @@ export type ImageConfigType = {
   height: number | string; // 20 | 20%
   x: number | string; // 20 | 20% | center | left 20% | right 20%
   y: number | string; // 20 | 20% | center | top 20% | bottom 20%,
-  border: number | null;
+  border?: number;
 };
 
 export type OptionsType = ParentOptionsType & {
