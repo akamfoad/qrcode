@@ -30,6 +30,8 @@ type RectsMapItemType = {
 export type OptionsType = ParentOptionsType & {
   fgColor: string;
   bgColor?: string;
+  width?: number;
+  height?: number;
 };
 
 const DEFAULT_OPTIONS = {
@@ -41,6 +43,8 @@ export default class QRCodeSVG extends AbstractQRCodeWithImage {
   fgColor: string;
   bgColor: string;
   qrCodeSVG: string | null = null;
+  height?: number;
+  width?: number;
   qrCodeDataUrl: string | null = null;
 
   constructor(value: string, options: Partial<OptionsType> = {}) {
@@ -49,6 +53,8 @@ export default class QRCodeSVG extends AbstractQRCodeWithImage {
 
     this.fgColor = params.fgColor;
     this.bgColor = params.bgColor;
+    this.width = params.width;
+    this.height = params.height;
   }
 
   _clearCache(): void {
@@ -201,7 +207,9 @@ export default class QRCodeSVG extends AbstractQRCodeWithImage {
     const size = this.getDataSize();
     const tags = [
       '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" ' +
-        `shape-rendering="crispEdges" viewBox="0 0 ${size} ${size}">`,
+        `shape-rendering="crispEdges" viewBox="0 0 ${size} ${size}"${
+          this.width ? ` width=${this.width}` : ''
+        }${this.height ? ` height=${this.height}` : ''} >`,
     ];
 
     if (this.bgColor) {

@@ -705,21 +705,13 @@ describe('QRCodeSVG', () => {
     it('should build empty svg without background', () => {
       const qrCode = new QRCodeSVG('test', { bgColor: null });
       qrCode.getDataSize = vi.fn(() => 42);
-      expect(qrCode._buildSVG([])).toEqual(
-        '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" ' +
-          'shape-rendering="crispEdges" viewBox="0 0 42 42"></svg>',
-      );
+      expect(qrCode._buildSVG([])).toMatchSnapshot();
     });
 
     it('should build empty svg with background', () => {
       const qrCode = new QRCodeSVG('test', { bgColor: 'red' });
       qrCode.getDataSize = vi.fn(() => 42);
-      expect(qrCode._buildSVG([])).toEqual(
-        '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" ' +
-          'shape-rendering="crispEdges" viewBox="0 0 42 42">' +
-          '<rect x="0" y="0" height="42" width="42" fill="red"/>' +
-          '</svg>',
-      );
+      expect(qrCode._buildSVG([])).toMatchSnapshot();
     });
 
     it('should build svg by rects', () => {
@@ -807,90 +799,7 @@ describe('QRCodeSVG', () => {
           { x: 12, y: 21, width: 2, height: 1 },
           { x: 16, y: 21, width: 1, height: 1 },
         ]),
-      ).toEqual(
-        '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" ' +
-          'shape-rendering="crispEdges" viewBox="0 0 42 42">' +
-          '<rect x="0" y="0" height="42" width="42" fill="#FFF"/>' +
-          '<rect x="1" y="1" height="1" width="7" fill="#000"/>' +
-          '<rect x="9" y="1" height="1" width="2" fill="#000"/>' +
-          '<rect x="13" y="1" height="3" width="1" fill="#000"/>' +
-          '<rect x="15" y="1" height="1" width="7" fill="#000"/>' +
-          '<rect x="1" y="2" height="6" width="1" fill="#000"/>' +
-          '<rect x="7" y="2" height="6" width="1" fill="#000"/>' +
-          '<rect x="10" y="2" height="1" width="1" fill="#000"/>' +
-          '<rect x="15" y="2" height="6" width="1" fill="#000"/>' +
-          '<rect x="21" y="2" height="6" width="1" fill="#000"/>' +
-          '<rect x="3" y="3" height="3" width="3" fill="#000"/>' +
-          '<rect x="9" y="3" height="3" width="1" fill="#000"/>' +
-          '<rect x="11" y="3" height="1" width="1" fill="#000"/>' +
-          '<rect x="17" y="3" height="3" width="3" fill="#000"/>' +
-          '<rect x="12" y="4" height="1" width="1" fill="#000"/>' +
-          '<rect x="9" y="5" height="1" width="3" fill="#000"/>' +
-          '<rect x="1" y="7" height="1" width="7" fill="#000"/>' +
-          '<rect x="9" y="7" height="1" width="1" fill="#000"/>' +
-          '<rect x="11" y="7" height="9" width="1" fill="#000"/>' +
-          '<rect x="13" y="7" height="1" width="1" fill="#000"/>' +
-          '<rect x="15" y="7" height="1" width="7" fill="#000"/>' +
-          '<rect x="10" y="8" height="1" width="2" fill="#000"/>' +
-          '<rect x="1" y="9" height="1" width="4" fill="#000"/>' +
-          '<rect x="7" y="9" height="1" width="1" fill="#000"/>' +
-          '<rect x="9" y="9" height="1" width="1" fill="#000"/>' +
-          '<rect x="14" y="9" height="1" width="1" fill="#000"/>' +
-          '<rect x="17" y="9" height="1" width="3" fill="#000"/>' +
-          '<rect x="21" y="9" height="3" width="1" fill="#000"/>' +
-          '<rect x="1" y="10" height="3" width="1" fill="#000"/>' +
-          '<rect x="4" y="10" height="1" width="3" fill="#000"/>' +
-          '<rect x="8" y="10" height="1" width="1" fill="#000"/>' +
-          '<rect x="13" y="10" height="3" width="1" fill="#000"/>' +
-          '<rect x="16" y="10" height="2" width="1" fill="#000"/>' +
-          '<rect x="18" y="10" height="1" width="2" fill="#000"/>' +
-          '<rect x="3" y="11" height="3" width="1" fill="#000"/>' +
-          '<rect x="5" y="11" height="1" width="3" fill="#000"/>' +
-          '<rect x="13" y="11" height="1" width="5" fill="#000"/>' +
-          '<rect x="20" y="11" height="1" width="2" fill="#000"/>' +
-          '<rect x="3" y="12" height="1" width="2" fill="#000"/>' +
-          '<rect x="8" y="12" height="1" width="2" fill="#000"/>' +
-          '<rect x="13" y="12" height="1" width="2" fill="#000"/>' +
-          '<rect x="18" y="12" height="5" width="1" fill="#000"/>' +
-          '<rect x="20" y="12" height="3" width="1" fill="#000"/>' +
-          '<rect x="2" y="13" height="1" width="2" fill="#000"/>' +
-          '<rect x="5" y="13" height="1" width="1" fill="#000"/>' +
-          '<rect x="7" y="13" height="1" width="1" fill="#000"/>' +
-          '<rect x="10" y="13" height="1" width="3" fill="#000"/>' +
-          '<rect x="14" y="13" height="4" width="1" fill="#000"/>' +
-          '<rect x="17" y="13" height="1" width="2" fill="#000"/>' +
-          '<rect x="9" y="14" height="1" width="1" fill="#000"/>' +
-          '<rect x="16" y="14" height="1" width="1" fill="#000"/>' +
-          '<rect x="1" y="15" height="1" width="7" fill="#000"/>' +
-          '<rect x="14" y="15" height="2" width="2" fill="#000"/>' +
-          '<rect x="17" y="15" height="1" width="3" fill="#000"/>' +
-          '<rect x="1" y="16" height="6" width="1" fill="#000"/>' +
-          '<rect x="7" y="16" height="6" width="1" fill="#000"/>' +
-          '<rect x="10" y="16" height="3" width="1" fill="#000"/>' +
-          '<rect x="12" y="16" height="1" width="4" fill="#000"/>' +
-          '<rect x="18" y="16" height="1" width="2" fill="#000"/>' +
-          '<rect x="3" y="17" height="3" width="3" fill="#000"/>' +
-          '<rect x="10" y="17" height="1" width="3" fill="#000"/>' +
-          '<rect x="15" y="17" height="1" width="1" fill="#000"/>' +
-          '<rect x="19" y="17" height="1" width="3" fill="#000"/>' +
-          '<rect x="9" y="18" height="1" width="2" fill="#000"/>' +
-          '<rect x="14" y="18" height="2" width="1" fill="#000"/>' +
-          '<rect x="17" y="18" height="1" width="2" fill="#000"/>' +
-          '<rect x="20" y="18" height="1" width="1" fill="#000"/>' +
-          '<rect x="9" y="19" height="3" width="1" fill="#000"/>' +
-          '<rect x="11" y="19" height="2" width="2" fill="#000"/>' +
-          '<rect x="17" y="19" height="2" width="1" fill="#000"/>' +
-          '<rect x="19" y="19" height="1" width="1" fill="#000"/>' +
-          '<rect x="9" y="20" height="1" width="5" fill="#000"/>' +
-          '<rect x="15" y="20" height="1" width="1" fill="#000"/>' +
-          '<rect x="17" y="20" height="1" width="2" fill="#000"/>' +
-          '<rect x="21" y="20" height="1" width="1" fill="#000"/>' +
-          '<rect x="1" y="21" height="1" width="7" fill="#000"/>' +
-          '<rect x="9" y="21" height="1" width="2" fill="#000"/>' +
-          '<rect x="12" y="21" height="1" width="2" fill="#000"/>' +
-          '<rect x="16" y="21" height="1" width="1" fill="#000"/>' +
-          '</svg>',
-      );
+      ).toMatchSnapshot();
     });
 
     it('should draw image if it is provided', () => {
@@ -910,15 +819,7 @@ describe('QRCodeSVG', () => {
           { x: 1, y: 1, width: 7, height: 1, id: 'i0' },
           { x: 9, y: 1, width: 2, height: 1, id: 'i5' },
         ]),
-      ).toEqual(
-        '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" ' +
-          'shape-rendering="crispEdges" viewBox="0 0 42 42">' +
-          '<rect x="0" y="0" height="42" width="42" fill="#FFF"/>' +
-          '<rect id="i0" x="1" y="1" height="1" width="7" fill="#000"/>' +
-          '<rect id="i5" x="9" y="1" height="1" width="2" fill="#000"/>' +
-          '<image xlink:href="https://some-url.com/test.png" x="19" y="21" width="4" height="20"/>' +
-          '</svg>',
-      );
+      ).toMatchSnapshot();
     });
 
     it('should build svg by relative rects', () => {
@@ -1006,90 +907,7 @@ describe('QRCodeSVG', () => {
           { id: 'i5', x: 3, y: 20 },
           { id: 'i3', x: 6, y: 19 },
         ]),
-      ).toEqual(
-        '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" ' +
-          'shape-rendering="crispEdges" viewBox="0 0 42 42">' +
-          '<rect x="0" y="0" height="42" width="42" fill="#FFF"/>' +
-          '<rect id="i0" x="1" y="1" height="1" width="7" fill="#000"/>' +
-          '<rect id="i5" x="9" y="1" height="1" width="2" fill="#000"/>' +
-          '<rect id="i2" x="13" y="1" height="3" width="1" fill="#000"/>' +
-          '<use xlink:href="#i0" x="14" y="0"/>' +
-          '<rect id="i1" x="1" y="2" height="6" width="1" fill="#000"/>' +
-          '<use xlink:href="#i1" x="6" y="0"/>' +
-          '<rect id="i3" x="10" y="2" height="1" width="1" fill="#000"/>' +
-          '<use xlink:href="#i1" x="14" y="0"/>' +
-          '<use xlink:href="#i1" x="20" y="0"/>' +
-          '<rect id="i4" x="3" y="3" height="3" width="3" fill="#000"/>' +
-          '<use xlink:href="#i2" x="-4" y="2"/>' +
-          '<use xlink:href="#i3" x="1" y="1"/>' +
-          '<use xlink:href="#i4" x="14" y="0"/>' +
-          '<use xlink:href="#i3" x="2" y="2"/>' +
-          '<rect id="i6" x="9" y="5" height="1" width="3" fill="#000"/>' +
-          '<use xlink:href="#i0" x="0" y="6"/>' +
-          '<use xlink:href="#i3" x="-1" y="5"/>' +
-          '<rect x="11" y="7" height="9" width="1" fill="#000"/>' +
-          '<use xlink:href="#i3" x="3" y="5"/>' +
-          '<use xlink:href="#i0" x="14" y="6"/>' +
-          '<use xlink:href="#i5" x="1" y="7"/>' +
-          '<rect id="i7" x="1" y="9" height="1" width="4" fill="#000"/>' +
-          '<use xlink:href="#i3" x="-3" y="7"/>' +
-          '<use xlink:href="#i3" x="-1" y="7"/>' +
-          '<use xlink:href="#i3" x="4" y="7"/>' +
-          '<use xlink:href="#i6" x="8" y="4"/>' +
-          '<use xlink:href="#i2" x="8" y="8"/>' +
-          '<use xlink:href="#i2" x="-12" y="9"/>' +
-          '<use xlink:href="#i6" x="-5" y="5"/>' +
-          '<use xlink:href="#i3" x="-2" y="8"/>' +
-          '<use xlink:href="#i2" x="0" y="9"/>' +
-          '<rect id="i8" x="16" y="10" height="2" width="1" fill="#000"/>' +
-          '<use xlink:href="#i5" x="9" y="9"/>' +
-          '<use xlink:href="#i2" x="-10" y="10"/>' +
-          '<use xlink:href="#i6" x="-4" y="6"/>' +
-          '<rect id="ia" x="13" y="11" height="1" width="5" fill="#000"/>' +
-          '<use xlink:href="#i5" x="11" y="10"/>' +
-          '<use xlink:href="#i5" x="-6" y="11"/>' +
-          '<use xlink:href="#i5" x="-1" y="11"/>' +
-          '<use xlink:href="#i5" x="4" y="11"/>' +
-          '<rect x="18" y="12" height="5" width="1" fill="#000"/>' +
-          '<use xlink:href="#i2" x="7" y="11"/>' +
-          '<use xlink:href="#i5" x="-7" y="12"/>' +
-          '<use xlink:href="#i3" x="-5" y="11"/>' +
-          '<use xlink:href="#i3" x="-3" y="11"/>' +
-          '<use xlink:href="#i6" x="1" y="8"/>' +
-          '<rect x="14" y="13" height="4" width="1" fill="#000"/>' +
-          '<use xlink:href="#i5" x="8" y="12"/>' +
-          '<use xlink:href="#i3" x="-1" y="12"/>' +
-          '<use xlink:href="#i3" x="6" y="12"/>' +
-          '<use xlink:href="#i0" x="0" y="14"/>' +
-          '<rect id="i9" x="14" y="15" height="2" width="2" fill="#000"/>' +
-          '<use xlink:href="#i6" x="8" y="10"/>' +
-          '<use xlink:href="#i1" x="0" y="14"/>' +
-          '<use xlink:href="#i1" x="6" y="14"/>' +
-          '<use xlink:href="#i2" x="-3" y="15"/>' +
-          '<use xlink:href="#i7" x="11" y="7"/>' +
-          '<use xlink:href="#i5" x="9" y="15"/>' +
-          '<use xlink:href="#i4" x="0" y="14"/>' +
-          '<use xlink:href="#i6" x="1" y="12"/>' +
-          '<use xlink:href="#i3" x="5" y="15"/>' +
-          '<use xlink:href="#i6" x="10" y="12"/>' +
-          '<use xlink:href="#i5" x="0" y="17"/>' +
-          '<use xlink:href="#i8" x="-2" y="8"/>' +
-          '<use xlink:href="#i5" x="8" y="17"/>' +
-          '<use xlink:href="#i3" x="10" y="16"/>' +
-          '<use xlink:href="#i2" x="-4" y="18"/>' +
-          '<use xlink:href="#i9" x="-3" y="4"/>' +
-          '<use xlink:href="#i8" x="1" y="9"/>' +
-          '<use xlink:href="#i3" x="9" y="17"/>' +
-          '<use xlink:href="#ia" x="-4" y="9"/>' +
-          '<use xlink:href="#i3" x="5" y="18"/>' +
-          '<use xlink:href="#i5" x="8" y="19"/>' +
-          '<use xlink:href="#i3" x="11" y="18"/>' +
-          '<use xlink:href="#i0" x="0" y="20"/>' +
-          '<use xlink:href="#i5" x="0" y="20"/>' +
-          '<use xlink:href="#i5" x="3" y="20"/>' +
-          '<use xlink:href="#i3" x="6" y="19"/>' +
-          '</svg>',
-      );
+      ).toMatchSnapshot();
     });
   });
 
@@ -1113,88 +931,7 @@ describe('QRCodeSVG', () => {
         bgColor: '#DDD',
         fgColor: '#222',
       });
-      expect(qrCode.toString()).toEqual(
-        '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" ' +
-          'shape-rendering="crispEdges" viewBox="0 0 23 23">' +
-          '<rect x="0" y="0" height="23" width="23" fill="#DDD"/>' +
-          '<rect x="1" y="1" height="1" width="7" fill="#222"/>' +
-          '<rect x="9" y="1" height="1" width="2" fill="#222"/>' +
-          '<rect x="13" y="1" height="3" width="1" fill="#222"/>' +
-          '<rect x="15" y="1" height="1" width="7" fill="#222"/>' +
-          '<rect x="1" y="2" height="6" width="1" fill="#222"/>' +
-          '<rect x="7" y="2" height="6" width="1" fill="#222"/>' +
-          '<rect x="10" y="2" height="1" width="1" fill="#222"/>' +
-          '<rect x="15" y="2" height="6" width="1" fill="#222"/>' +
-          '<rect x="21" y="2" height="6" width="1" fill="#222"/>' +
-          '<rect x="3" y="3" height="3" width="3" fill="#222"/>' +
-          '<rect x="9" y="3" height="3" width="1" fill="#222"/>' +
-          '<rect x="11" y="3" height="1" width="1" fill="#222"/>' +
-          '<rect x="17" y="3" height="3" width="3" fill="#222"/>' +
-          '<rect x="12" y="4" height="1" width="1" fill="#222"/>' +
-          '<rect x="10" y="5" height="1" width="2" fill="#222"/>' +
-          '<rect x="2" y="7" height="1" width="5" fill="#222"/>' +
-          '<rect x="9" y="7" height="1" width="1" fill="#222"/>' +
-          '<rect x="11" y="7" height="9" width="1" fill="#222"/>' +
-          '<rect x="13" y="7" height="1" width="1" fill="#222"/>' +
-          '<rect x="16" y="7" height="1" width="5" fill="#222"/>' +
-          '<rect x="10" y="8" height="1" width="1" fill="#222"/>' +
-          '<rect x="1" y="9" height="1" width="4" fill="#222"/>' +
-          '<rect x="7" y="9" height="1" width="1" fill="#222"/>' +
-          '<rect x="9" y="9" height="1" width="1" fill="#222"/>' +
-          '<rect x="14" y="9" height="1" width="1" fill="#222"/>' +
-          '<rect x="17" y="9" height="1" width="3" fill="#222"/>' +
-          '<rect x="21" y="9" height="3" width="1" fill="#222"/>' +
-          '<rect x="1" y="10" height="3" width="1" fill="#222"/>' +
-          '<rect x="4" y="10" height="1" width="3" fill="#222"/>' +
-          '<rect x="8" y="10" height="1" width="1" fill="#222"/>' +
-          '<rect x="13" y="10" height="3" width="1" fill="#222"/>' +
-          '<rect x="16" y="10" height="2" width="1" fill="#222"/>' +
-          '<rect x="18" y="10" height="1" width="2" fill="#222"/>' +
-          '<rect x="3" y="11" height="3" width="1" fill="#222"/>' +
-          '<rect x="5" y="11" height="1" width="3" fill="#222"/>' +
-          '<rect x="14" y="11" height="1" width="2" fill="#222"/>' +
-          '<rect x="17" y="11" height="1" width="1" fill="#222"/>' +
-          '<rect x="20" y="11" height="4" width="1" fill="#222"/>' +
-          '<rect x="4" y="12" height="1" width="1" fill="#222"/>' +
-          '<rect x="8" y="12" height="1" width="2" fill="#222"/>' +
-          '<rect x="14" y="12" height="5" width="1" fill="#222"/>' +
-          '<rect x="18" y="12" height="5" width="1" fill="#222"/>' +
-          '<rect x="2" y="13" height="1" width="1" fill="#222"/>' +
-          '<rect x="5" y="13" height="1" width="1" fill="#222"/>' +
-          '<rect x="7" y="13" height="1" width="1" fill="#222"/>' +
-          '<rect x="10" y="13" height="1" width="1" fill="#222"/>' +
-          '<rect x="12" y="13" height="1" width="1" fill="#222"/>' +
-          '<rect x="17" y="13" height="1" width="1" fill="#222"/>' +
-          '<rect x="9" y="14" height="1" width="1" fill="#222"/>' +
-          '<rect x="16" y="14" height="1" width="1" fill="#222"/>' +
-          '<rect x="1" y="15" height="1" width="7" fill="#222"/>' +
-          '<rect x="15" y="15" height="3" width="1" fill="#222"/>' +
-          '<rect x="17" y="15" height="1" width="1" fill="#222"/>' +
-          '<rect x="19" y="15" height="3" width="1" fill="#222"/>' +
-          '<rect x="1" y="16" height="6" width="1" fill="#222"/>' +
-          '<rect x="7" y="16" height="6" width="1" fill="#222"/>' +
-          '<rect x="10" y="16" height="3" width="1" fill="#222"/>' +
-          '<rect x="12" y="16" height="1" width="2" fill="#222"/>' +
-          '<rect x="3" y="17" height="3" width="3" fill="#222"/>' +
-          '<rect x="11" y="17" height="1" width="2" fill="#222"/>' +
-          '<rect x="20" y="17" height="1" width="2" fill="#222"/>' +
-          '<rect x="9" y="18" height="4" width="1" fill="#222"/>' +
-          '<rect x="14" y="18" height="2" width="1" fill="#222"/>' +
-          '<rect x="17" y="18" height="1" width="2" fill="#222"/>' +
-          '<rect x="20" y="18" height="1" width="1" fill="#222"/>' +
-          '<rect x="11" y="19" height="2" width="2" fill="#222"/>' +
-          '<rect x="17" y="19" height="2" width="1" fill="#222"/>' +
-          '<rect x="19" y="19" height="1" width="1" fill="#222"/>' +
-          '<rect x="10" y="20" height="2" width="1" fill="#222"/>' +
-          '<rect x="13" y="20" height="2" width="1" fill="#222"/>' +
-          '<rect x="15" y="20" height="1" width="1" fill="#222"/>' +
-          '<rect x="18" y="20" height="1" width="1" fill="#222"/>' +
-          '<rect x="21" y="20" height="1" width="1" fill="#222"/>' +
-          '<rect x="2" y="21" height="1" width="5" fill="#222"/>' +
-          '<rect x="12" y="21" height="1" width="1" fill="#222"/>' +
-          '<rect x="16" y="21" height="1" width="1" fill="#222"/>' +
-          '</svg>',
-      );
+      expect(qrCode.toString()).toMatchSnapshot();
     });
   });
 
@@ -1209,9 +946,7 @@ describe('QRCodeSVG', () => {
       const qrCode = new QRCodeSVG('test');
       qrCode._buildSVG = vi.fn();
       qrCode.qrCodeDataUrl = 'data:image/svg+xml;base64,<svg><qrcode /></svg>';
-      expect(qrCode.toDataUrl()).toEqual(
-        'data:image/svg+xml;base64,<svg><qrcode /></svg>',
-      );
+      expect(qrCode.toDataUrl()).toMatchSnapshot();
       expect(qrCode._buildSVG).not.toHaveBeenCalled();
     });
 
@@ -1220,52 +955,7 @@ describe('QRCodeSVG', () => {
         bgColor: '#DDD',
         fgColor: '#222',
       });
-      expect(qrCode.toDataUrl()).toEqual(
-        'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRw' +
-          'Oi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHNoYXBlLXJlbmRlcmluZz0iY3Jpc3BFZGdlcyIgdmlld0Jv' +
-          'eD0iMCAwIDIzIDIzIj48cmVjdCB4PSIwIiB5PSIwIiBoZWlnaHQ9IjIzIiB3aWR0aD0iMjMiIGZpbGw9IiNEREQiLz48cmVjdCBp' +
-          'ZD0iaTAiIHg9IjEiIHk9IjEiIGhlaWdodD0iMSIgd2lkdGg9IjciIGZpbGw9IiMyMjIiLz48cmVjdCBpZD0iaTUiIHg9IjkiIHk9' +
-          'IjEiIGhlaWdodD0iMSIgd2lkdGg9IjIiIGZpbGw9IiMyMjIiLz48cmVjdCBpZD0iaTIiIHg9IjEzIiB5PSIxIiBoZWlnaHQ9IjMi' +
-          'IHdpZHRoPSIxIiBmaWxsPSIjMjIyIi8+PHVzZSB4bGluazpocmVmPSIjaTAiIHg9IjE0IiB5PSIwIi8+PHJlY3QgaWQ9ImkxIiB4' +
-          'PSIxIiB5PSIyIiBoZWlnaHQ9IjYiIHdpZHRoPSIxIiBmaWxsPSIjMjIyIi8+PHVzZSB4bGluazpocmVmPSIjaTEiIHg9IjYiIHk9' +
-          'IjAiLz48cmVjdCBpZD0iaTMiIHg9IjEwIiB5PSIyIiBoZWlnaHQ9IjEiIHdpZHRoPSIxIiBmaWxsPSIjMjIyIi8+PHVzZSB4bGlu' +
-          'azpocmVmPSIjaTEiIHg9IjE0IiB5PSIwIi8+PHVzZSB4bGluazpocmVmPSIjaTEiIHg9IjIwIiB5PSIwIi8+PHJlY3QgaWQ9Imk0' +
-          'IiB4PSIzIiB5PSIzIiBoZWlnaHQ9IjMiIHdpZHRoPSIzIiBmaWxsPSIjMjIyIi8+PHVzZSB4bGluazpocmVmPSIjaTIiIHg9Ii00' +
-          'IiB5PSIyIi8+PHVzZSB4bGluazpocmVmPSIjaTMiIHg9IjEiIHk9IjEiLz48dXNlIHhsaW5rOmhyZWY9IiNpNCIgeD0iMTQiIHk9' +
-          'IjAiLz48dXNlIHhsaW5rOmhyZWY9IiNpMyIgeD0iMiIgeT0iMiIvPjx1c2UgeGxpbms6aHJlZj0iI2k1IiB4PSIxIiB5PSI0Ii8+' +
-          'PHJlY3QgaWQ9Imk2IiB4PSIyIiB5PSI3IiBoZWlnaHQ9IjEiIHdpZHRoPSI1IiBmaWxsPSIjMjIyIi8+PHVzZSB4bGluazpocmVm' +
-          'PSIjaTMiIHg9Ii0xIiB5PSI1Ii8+PHJlY3QgeD0iMTEiIHk9IjciIGhlaWdodD0iOSIgd2lkdGg9IjEiIGZpbGw9IiMyMjIiLz48' +
-          'dXNlIHhsaW5rOmhyZWY9IiNpMyIgeD0iMyIgeT0iNSIvPjx1c2UgeGxpbms6aHJlZj0iI2k2IiB4PSIxNCIgeT0iMCIvPjx1c2Ug' +
-          'eGxpbms6aHJlZj0iI2kzIiB4PSIwIiB5PSI2Ii8+PHJlY3QgeD0iMSIgeT0iOSIgaGVpZ2h0PSIxIiB3aWR0aD0iNCIgZmlsbD0i' +
-          'IzIyMiIvPjx1c2UgeGxpbms6aHJlZj0iI2kzIiB4PSItMyIgeT0iNyIvPjx1c2UgeGxpbms6aHJlZj0iI2kzIiB4PSItMSIgeT0i' +
-          'NyIvPjx1c2UgeGxpbms6aHJlZj0iI2kzIiB4PSI0IiB5PSI3Ii8+PHJlY3QgaWQ9Imk3IiB4PSIxNyIgeT0iOSIgaGVpZ2h0PSIx' +
-          'IiB3aWR0aD0iMyIgZmlsbD0iIzIyMiIvPjx1c2UgeGxpbms6aHJlZj0iI2kyIiB4PSI4IiB5PSI4Ii8+PHVzZSB4bGluazpocmVm' +
-          'PSIjaTIiIHg9Ii0xMiIgeT0iOSIvPjx1c2UgeGxpbms6aHJlZj0iI2k3IiB4PSItMTMiIHk9IjEiLz48dXNlIHhsaW5rOmhyZWY9' +
-          'IiNpMyIgeD0iLTIiIHk9IjgiLz48dXNlIHhsaW5rOmhyZWY9IiNpMiIgeD0iMCIgeT0iOSIvPjxyZWN0IGlkPSJpYSIgeD0iMTYi' +
-          'IHk9IjEwIiBoZWlnaHQ9IjIiIHdpZHRoPSIxIiBmaWxsPSIjMjIyIi8+PHVzZSB4bGluazpocmVmPSIjaTUiIHg9IjkiIHk9Ijki' +
-          'Lz48dXNlIHhsaW5rOmhyZWY9IiNpMiIgeD0iLTEwIiB5PSIxMCIvPjx1c2UgeGxpbms6aHJlZj0iI2k3IiB4PSItMTIiIHk9IjIi' +
-          'Lz48dXNlIHhsaW5rOmhyZWY9IiNpNSIgeD0iNSIgeT0iMTAiLz48dXNlIHhsaW5rOmhyZWY9IiNpMyIgeD0iNyIgeT0iOSIvPjxy' +
-          'ZWN0IGlkPSJpOSIgeD0iMjAiIHk9IjExIiBoZWlnaHQ9IjQiIHdpZHRoPSIxIiBmaWxsPSIjMjIyIi8+PHVzZSB4bGluazpocmVm' +
-          'PSIjaTMiIHg9Ii02IiB5PSIxMCIvPjx1c2UgeGxpbms6aHJlZj0iI2k1IiB4PSItMSIgeT0iMTEiLz48cmVjdCBpZD0iaTgiIHg9' +
-          'IjE0IiB5PSIxMiIgaGVpZ2h0PSI1IiB3aWR0aD0iMSIgZmlsbD0iIzIyMiIvPjx1c2UgeGxpbms6aHJlZj0iI2k4IiB4PSI0IiB5' +
-          'PSIwIi8+PHVzZSB4bGluazpocmVmPSIjaTMiIHg9Ii04IiB5PSIxMSIvPjx1c2UgeGxpbms6aHJlZj0iI2kzIiB4PSItNSIgeT0i' +
-          'MTEiLz48dXNlIHhsaW5rOmhyZWY9IiNpMyIgeD0iLTMiIHk9IjExIi8+PHVzZSB4bGluazpocmVmPSIjaTMiIHg9IjAiIHk9IjEx' +
-          'Ii8+PHVzZSB4bGluazpocmVmPSIjaTMiIHg9IjIiIHk9IjExIi8+PHVzZSB4bGluazpocmVmPSIjaTMiIHg9IjciIHk9IjExIi8+' +
-          'PHVzZSB4bGluazpocmVmPSIjaTMiIHg9Ii0xIiB5PSIxMiIvPjx1c2UgeGxpbms6aHJlZj0iI2kzIiB4PSI2IiB5PSIxMiIvPjx1' +
-          'c2UgeGxpbms6aHJlZj0iI2kwIiB4PSIwIiB5PSIxNCIvPjx1c2UgeGxpbms6aHJlZj0iI2kyIiB4PSIyIiB5PSIxNCIvPjx1c2Ug' +
-          'eGxpbms6aHJlZj0iI2kzIiB4PSI3IiB5PSIxMyIvPjx1c2UgeGxpbms6aHJlZj0iI2kyIiB4PSI2IiB5PSIxNCIvPjx1c2UgeGxp' +
-          'bms6aHJlZj0iI2kxIiB4PSIwIiB5PSIxNCIvPjx1c2UgeGxpbms6aHJlZj0iI2kxIiB4PSI2IiB5PSIxNCIvPjx1c2UgeGxpbms6' +
-          'aHJlZj0iI2kyIiB4PSItMyIgeT0iMTUiLz48dXNlIHhsaW5rOmhyZWY9IiNpNSIgeD0iMyIgeT0iMTUiLz48dXNlIHhsaW5rOmhy' +
-          'ZWY9IiNpNCIgeD0iMCIgeT0iMTQiLz48dXNlIHhsaW5rOmhyZWY9IiNpNSIgeD0iMiIgeT0iMTYiLz48dXNlIHhsaW5rOmhyZWY9' +
-          'IiNpNSIgeD0iMTEiIHk9IjE2Ii8+PHVzZSB4bGluazpocmVmPSIjaTkiIHg9Ii0xMSIgeT0iNyIvPjx1c2UgeGxpbms6aHJlZj0i' +
-          'I2lhIiB4PSItMiIgeT0iOCIvPjx1c2UgeGxpbms6aHJlZj0iI2k1IiB4PSI4IiB5PSIxNyIvPjx1c2UgeGxpbms6aHJlZj0iI2kz' +
-          'IiB4PSIxMCIgeT0iMTYiLz48cmVjdCB4PSIxMSIgeT0iMTkiIGhlaWdodD0iMiIgd2lkdGg9IjIiIGZpbGw9IiMyMjIiLz48dXNl' +
-          'IHhsaW5rOmhyZWY9IiNpYSIgeD0iMSIgeT0iOSIvPjx1c2UgeGxpbms6aHJlZj0iI2kzIiB4PSI5IiB5PSIxNyIvPjx1c2UgeGxp' +
-          'bms6aHJlZj0iI2lhIiB4PSItNiIgeT0iMTAiLz48dXNlIHhsaW5rOmhyZWY9IiNpYSIgeD0iLTMiIHk9IjEwIi8+PHVzZSB4bGlu' +
-          'azpocmVmPSIjaTMiIHg9IjUiIHk9IjE4Ii8+PHVzZSB4bGluazpocmVmPSIjaTMiIHg9IjgiIHk9IjE4Ii8+PHVzZSB4bGluazpo' +
-          'cmVmPSIjaTMiIHg9IjExIiB5PSIxOCIvPjx1c2UgeGxpbms6aHJlZj0iI2k2IiB4PSIwIiB5PSIxNCIvPjx1c2UgeGxpbms6aHJl' +
-          'Zj0iI2kzIiB4PSIyIiB5PSIxOSIvPjx1c2UgeGxpbms6aHJlZj0iI2kzIiB4PSI2IiB5PSIxOSIvPjwvc3ZnPg==',
-      );
+      expect(qrCode.toDataUrl()).toMatchSnapshot();
     });
   });
 });
